@@ -10,7 +10,6 @@ public class MyApplication {
 
         ArrayList<Person> people = new ArrayList<>();
 
-        // ---------- EMPLOYEES ----------
         Scanner empScanner = new Scanner(new File("src/source_employee.txt"));
         while (empScanner.hasNextLine()) {
             String line = empScanner.nextLine().trim();
@@ -26,7 +25,6 @@ public class MyApplication {
         }
         empScanner.close();
 
-        // ---------- STUDENTS ----------
         Scanner studScanner = new Scanner(new File("src/source_student.txt"));
         while (studScanner.hasNextLine()) {
             String line = studScanner.nextLine().trim();
