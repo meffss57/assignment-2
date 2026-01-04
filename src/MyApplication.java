@@ -56,12 +56,10 @@ public class MyApplication {
 
     public static void printData(Iterable<Person> people) {
         for (Person p : people) {
-
-            double payment = p.getPaymentAmount();
-
-            System.out.println(
-                    p.getClass().getSimpleName() + " -> " +
-                            p + " earns " + String.format("%.2f", payment) + " tenge"
+            System.out.printf(
+                    "%s earns %.2f tenge%n",
+                    p,
+                    p.getPaymentAmount()
             );
         }
     }
