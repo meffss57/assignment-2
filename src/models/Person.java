@@ -14,8 +14,8 @@ public abstract class Person implements Payable, Comparable<Person> {
 
     public Person(String name, String surname) {
         this.id = counter++;
-        this.name = name;
-        this.surname = surname;
+        this.setName(name);
+        this.setSurname(surname);
     }
 
     public int getId() {
@@ -26,12 +26,12 @@ public abstract class Person implements Payable, Comparable<Person> {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public void setSurname(String surname) {
