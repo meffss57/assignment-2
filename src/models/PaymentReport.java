@@ -7,7 +7,7 @@ public class PaymentReport {
     public static double calculateTotal(List<Person> people) {
         double total = 0;
         for (Person p : people) {
-            total += p.getPaymentAmount(); // polymorphic call
+            total += p.getPaymentAmount();
         }
         return total;
     }
