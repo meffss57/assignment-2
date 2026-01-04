@@ -38,10 +38,6 @@ public abstract class Person implements Payable, Comparable<Person> {
         this.surname = surname;
     }
 
-    public String getPosition() {
-        return "Student";
-    }
-
     @Override
     public String toString() {
         return id + ". " + name + " " + surname;
