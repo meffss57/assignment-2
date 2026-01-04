@@ -15,13 +15,11 @@ public class MyApplication {
             String line = empScanner.nextLine().trim();
             if (line.isEmpty()) continue;
 
-            String[] parts = line.split("\\s+");
-            String name = parts[0];
-            String surname = parts[1];
-            String position = parts[2];
-            double salary = Double.parseDouble(parts[3]);
-
-            people.add(new Employee(name, surname, position, salary));
+            String[] p = line.split("\\s+");
+            people.add(new Employee(
+                    p[0], p[1], p[2],
+                    Double.parseDouble(p[3])
+            ));
         }
         empScanner.close();
 
@@ -30,25 +28,40 @@ public class MyApplication {
             String line = studScanner.nextLine().trim();
             if (line.isEmpty()) continue;
 
-            String[] parts = line.split("\\s+");
-            String name = parts[0];
-            String surname = parts[1];
-            double gpa = Double.parseDouble(parts[2]);
-
-            people.add(new Student(name, surname, gpa));
+            String[] p = line.split("\\s+");
+            people.add(new Student(
+                    p[0], p[1],
+                    Double.parseDouble(p[2])
+            ));
         }
         studScanner.close();
 
         Collections.sort(people);
         printData(people);
+
+        double total = PaymentReport.calculateTotal(people);
+        double average = PaymentReport.calculateAverage(people);
+        Person top = PaymentReport.findTopEarner(people);
+
+        System.out.printf("Total paid: %.2f tenge%n", total);
+        System.out.printf("Average income: %.2f tenge%n", average);
+
+        if (top != null) {
+            System.out.println(
+                    "Top earner: " + top +
+                            " earns " + String.format("%.2f", top.getPaymentAmount()) + " tenge"
+            );
+        }
     }
 
     public static void printData(Iterable<Person> people) {
         for (Person p : people) {
-            System.out.printf(
-                    "%s earns %.2f tenge%n",
-                    p,
-                    p.getPaymentAmount()
+
+            double payment = p.getPaymentAmount();
+
+            System.out.println(
+                    p.getClass().getSimpleName() + " -> " +
+                            p + " earns " + String.format("%.2f", payment) + " tenge"
             );
         }
     }
